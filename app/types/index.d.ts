@@ -49,3 +49,16 @@ interface Feedback {
         }[];
     };
 }
+// 1. Resolves the error for importing the main PDF.js module (pdf.mjs)
+declare module "pdfjs-dist/build/pdf.mjs" {
+    // 🚨 CRITICAL FIX: Add the worker types here
+    export * from "pdfjs-dist/types/src/display/worker";
+    // Re-export the main API types
+    export * from "pdfjs-dist/types/src/display/api";
+}
+
+// 2. Resolves the error for the build-tool-style import of the worker URL
+declare module "pdfjs-dist/build/pdf.worker.min.mjs?url" {
+    const workerUrl: string;
+    export default workerUrl;
+}

@@ -19,12 +19,17 @@ type Pages = {
   "/upload": {
     params: {};
   };
+  "/*": {
+    params: {
+      "*": string;
+    };
+  };
 };
 
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/auth" | "/upload";
+    page: "/" | "/auth" | "/upload" | "/*";
   };
   "routes/home.tsx": {
     id: "routes/home";
@@ -37,5 +42,9 @@ type RouteFiles = {
   "routes/upload.tsx": {
     id: "routes/upload";
     page: "/upload";
+  };
+  "routes/NotFound.tsx": {
+    id: "routes/NotFound";
+    page: "/*";
   };
 };

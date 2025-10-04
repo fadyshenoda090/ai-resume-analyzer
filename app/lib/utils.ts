@@ -1,5 +1,7 @@
+// file #5: ~/lib/utils.ts (Modified)
+
 // Converts bytes to a human-readable string (KB, MB, GB)
-export function formatSize(bytes: number): string {
+export function utils(bytes: number): string {
     if (bytes < 1024) return `${bytes} B`;
     const kb = bytes / 1024;
     if (kb < 1024) return `${kb.toFixed(2)} KB`;
@@ -8,3 +10,6 @@ export function formatSize(bytes: number): string {
     const gb = mb / 1024;
     return `${gb.toFixed(2)} GB`;
 }
+
+export const generateUUID = () => window.crypto.randomUUID();
+// (Ensure you also removed the 'node:crypto' import)
